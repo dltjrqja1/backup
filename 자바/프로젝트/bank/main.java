@@ -2,22 +2,19 @@ import java.util.*;
 
 class Account{
     String name;
-    int Account_number;
+    final int ACCOUNT_NUMBER;
     int password;
-    static int num = 0;
+    static int num = 1000;
 
-    { Account_number = num + 1000; }
-
-    static {num++;}
-
-    void set_name(String name){
-        this.name = name;
+    {
+        ACCOUNT_NUMBER = num;
+        num++;
     }
-    void set_password(int password){
-        this.password = password;
-    }
+
+    void set_name(String name){ this.name = name; }
+    void set_password(int password){ this.password = password; }
     String get_name(){ return this.name; }
-    int get_account(){ return this.Account_number; }
+    int get_account(){ return this.ACCOUNT_NUMBER; }
 }
 
 public class main{
@@ -37,7 +34,8 @@ public class main{
         int password = Integer.parseInt(ps_string);
         tmp_account.set_password(password);
         //계좌 비밀번호 정하기
-        accounts[num1++] = tmp_account;
+        accounts[num1] = tmp_account;
+        num1++;
     }
 
     static void View_Accounts(){
@@ -73,7 +71,7 @@ public class main{
                 case 5:
                     //Withdraw();//출금
                     break;
-                case 61:
+                case 6:
                     View_Accounts();//모든 계좌 보기
                 default:
                     break out_loop;//종료
